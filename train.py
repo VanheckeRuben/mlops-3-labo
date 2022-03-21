@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
+import sklearn.linear_models
 
 ## Model saving
 import pickle
@@ -24,7 +25,8 @@ def main():
     X_train, X_valid, y_train, y_valid = train_test_split(X_full, y_full, test_size=0.3, random_state=0)
     
     # Train a RandomForestClassifier
-    model = RandomForestClassifier(n_estimators=20, random_state=0)
+    # model = RandomForestClassifier(n_estimators=20, random_state=0)
+    model = linear_model.LinearRegression()
     print(f'Training {model}')
     model.fit(X_train, y_train)
     
@@ -32,8 +34,8 @@ def main():
     predict = model.predict(X_valid)
     
     # Show our model accuracy on the validation data
-    accuracy = metrics.accuracy_score(y_valid, predict)
-    print('Valid Accuracy: ',np.round(accuracy, 4))
+    # accuracy = metrics.accuracy_score(y_valid, predict)
+    # print('Valid Accuracy: ',np.round(accuracy, 4))
     
     # Train model on the full dataset
     model.fit(X_full, y_full)
