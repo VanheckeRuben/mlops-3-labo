@@ -5,11 +5,13 @@ on:
   push:
     branches:
       - 'main'
+      - 'exercise'
     paths:
       - 'data/raw/**.csv'
   workflow_dispatch:
     branches:
     - 'main'
+    - 'exercise'
       
 jobs:
   input_test:
@@ -18,5 +20,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: prediction_test
+      - name: unittest_output
         uses: ./.github/actions/unittest_prediction
